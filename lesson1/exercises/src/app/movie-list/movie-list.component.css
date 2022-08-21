@@ -1,0 +1,12 @@
+.movies {
+  color: slategray;
+  font-size: 1.5em;
+}
+
+.movies h3 {
+  text-align: center;
+}
+
+.movies li {
+  color: steelblue;
+}
