@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
+type Candidate = {
+  name: string;
+  data: { age: number, mass: string, sidekick: string; };
+  image: string;
+}
+
 @Component({
   selector: 'candidates',
   templateUrl: './candidates.component.html',
   styleUrls: ['./candidates.component.css']
 })
 export class CandidatesComponent implements OnInit {
-   missionName = "LaunchCode Moonshot"
+  missionName = "LaunchCode Moonshot";
+  selected: Candidate = null;
 
    candidates = [
     {name: 'Rusty Rutabaga', data: {age: 5, mass: '0.75 kg', sidekick: 'Blake'}, image: 'assets/images/Blake.png'},
@@ -24,9 +31,13 @@ export class CandidatesComponent implements OnInit {
   }
 
   // Code the addToCrew function here:
-
+  addToCrew(candidate: Candidate): void {
+    if (!this.existsInCrew(candidate.name)) this.crew.push(candidate);
+  }
 
   // BONUS: Code the changeMissionName function here:
-
+  existsInCrew(name: string): boolean {
+    return this.crew.find(member => member.name === name) !== undefined;
+  }
 
 }
